@@ -11,6 +11,7 @@ const firebaseConfig = {
   projectId: FIREBASE_PROJECT_ID
 };
 
+// التهيئة الجديدة مع سطر التفعيل الإضافي
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
@@ -176,6 +177,8 @@ async function recordJournalEntry(message) {
       entries: firebase.firestore.FieldValue.arrayUnion(entry)
     }, { merge: true });
     
+    console.log("تم تسجيل المذكرة بنجاح!");
+    
   } catch (error) {
     console.error('Journal Error:', error);
   }
@@ -223,3 +226,12 @@ document.getElementById('admin-btn').addEventListener('click', () => {
 
 // تهيئة أولية
 updateMemoryPreview();
+
+// ======== إصلاح جديد: تسجيل الدخول التلقائي لـ Firebase ========
+firebase.auth().signInAnonymously()
+  .then(() => {
+    console.log("تم تسجيل الدخول إلى Firebase بنجاح");
+  })
+  .catch((error) => {
+    console.error("خطأ في تسجيل الدخول إلى Firebase:", error);
+  });
