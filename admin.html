@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لوحة تحكم ميمو 🔐</title>
     <link rel="stylesheet" href="style.css">
-    <!-- تم إضافة رابط FontAwesome الصحيح -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .admin-container {
@@ -177,6 +176,11 @@
             document.getElementById('conversations-count').textContent = '32';
             document.getElementById('last-login').textContent = 'الآن';
         }, 2000);
+        
+        // إضافة رد فعل للحفظ
+        document.querySelector('.btn-admin').addEventListener('click', function() {
+            alert('تم حفظ الإعدادات بنجاح!');
+        });
     </script>
 </body>
 </html>
